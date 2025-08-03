@@ -4,7 +4,7 @@ Uma página web simples, com visual Hacker, que exibe seus repositórios públic
 
 ## Demonstração
 
-<img src="https://github.com/zonaeducacional/meus-repos-hacker/raw/main/demo.png" alt="Demonstração da página Hacker" width="600"/>
+<img src="https://zonaeducacional.github.io/repositorios/" alt="Demonstração da página Hacker" width="600"/>
 
 ## Características
 
