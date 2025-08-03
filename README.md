@@ -1,17 +1,10 @@
-# Meus Repositórios // Hacker Page
+# Meus Repositórios // Vibe Coding em Educação
 
-Uma página web simples, com visual Hacker, que exibe seus repositórios públicos do GitHub usando HTML, CSS e JavaScript puro.
+Uma página web simples que exibe seus repositórios públicos do GitHub usando HTML, CSS e JavaScript puro.
 
 ## Demonstração
 
 <img src="https://zonaeducacional.github.io/repositorios/" alt="Demonstração da página Hacker" width="600"/>
-
-## Características
-
-- Visual neon verde, fonte monoespaçada e animação de brilho.
-- Listagem dinâmica dos seus repositórios via API do GitHub.
-- Sem dependências externas.
-- Layout responsivo e fácil de personalizar.
 
 ## Como usar
 
