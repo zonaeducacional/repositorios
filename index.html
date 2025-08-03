@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Meus Repositórios - zonaeducacional</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #181a22;
+      --card-bg: #22232b;
+      --card-hover: #2b2d39;
+      --primary: #3D5AFE;
+      --primary-light: #7a84d8;
+      --text: #e9ecf0;
+      --desc: #bfc6d6;
+      --border: #292b36;
+      --shadow: 0 2px 16px rgba(61,90,254,0.10);
+      --avatar-size: 84px;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+    header {
+      text-align: center;
+      padding: 2em 1em 1em 1em;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1em;
+    }
+    .perfil {
+      display: flex;
+      align-items: center;
+      gap: 1.3em;
+      justify-content: center;
+      margin-bottom: 1em;
+    }
+    .perfil-avatar {
+      width: var(--avatar-size);
+      height: var(--avatar-size);
+      border-radius: 50%;
+      border: 3px solid var(--primary);
+      object-fit: cover;
+      box-shadow: 0 2px 12px rgba(61,90,254,0.22);
+      background: #23253a;
+    }
+    .perfil-info {
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3em;
+    }
+    .perfil-info a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1em;
+      transition: color 0.2s;
+    }
+    .perfil-info a:hover {
+      color: var(--primary-light);
+      text-decoration: underline;
+    }
+    .perfil-nome {
+      font-size: 1.18em;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .title-cursor {
+      display: inline-block;
+      font-size: 2em;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: var(--primary);
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      position: relative;
+      margin-bottom: 0.3em;
+    }
+    .title-cursor .cursor {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      color: #7a84d8;
+      font-weight: 400;
+      animation: blink-cursor 1s steps(1) infinite;
+      position: relative;
+      left: 2px;
+    }
+    @keyframes blink-cursor {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+    header p {
+      color: var(--desc);
+      font-size: 1.07em;
+      margin-top: 0.7em;
+      font-family: 'Inter', sans-serif;
+      margin-bottom: 0;
+    }
+
+    /* Grid de repositórios */
+    .repos-list {
+      max-width: 1100px;
+      margin: 2em auto 0 auto;
+      padding: 0 1em 2em 1em;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2em;
+    }
+    .repo {
+      background: var(--card-bg);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      padding: 1.2em 1em 1em 1.2em;
+      transition: background 0.22s, box-shadow 0.22s, border-color 0.22s;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5em;
+      min-height: 120px;
+      justify-content: space-between;
+    }
+    .repo:hover {
+      background: var(--card-hover);
+      box-shadow: 0 6px 24px rgba(61,90,254,0.16);
+      border-color: var(--primary-light);
+    }
+    .repo a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.13em;
+      word-break: break-all;
+      transition: color 0.2s;
+    }
+    .repo a:hover {
+      color: #aab7ff;
+      text-decoration: underline;
+    }
+    .repo-desc {
+      color: var(--desc);
+      font-size: 1em;
+      font-style: italic;
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .repo-info {
+      font-size: 0.95em;
+      color: #9fa9c2;
+      margin-top: auto;
+      display: flex;
+      gap: 1.5em;
+      flex-wrap: wrap;
+    }
+    .loading {
+      text-align: center;
+      margin: 3em 0;
+      font-size: 1.1em;
+      letter-spacing: 1.5px;
+      color: var(--primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6em;
+      grid-column: 1 / -1;
+    }
+    .loading .spinner {
+      width: 32px;
+      height: 32px;
+      border: 4px solid #292b36;
+      border-top: 4px solid var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    footer {
+      text-align: center;
+      font-size: 0.98em;
+      color: var(--desc);
+      padding: 2em 1em 1.2em 1em;
+      background: var(--bg);
+      margin-top: 3em;
+      border-top: 1px solid var(--border);
+      letter-spacing: 1px;
+    }
+    @media (max-width: 800px) {
+      .repos-list {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.2em;
+      }
+      .perfil { flex-direction: column; gap: 0.6em; }
+      .perfil-info { align-items: center; }
+    }
+    @media (max-width: 600px) {
+      .title-cursor { font-size: 1.1em; }
+      .repos-list { padding: 0.5em 0; }
+      .repo { padding: 1em 0.7em; }
+      header { padding: 1.2em 0.5em 0.8em 0.5em; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="perfil" id="perfil">
+      <!-- Perfil será carregado via JS -->
+    </div>
+    <h1 class="title-cursor">
+      zonaeducacional // Repositórios<span class="cursor">|</span>
+    </h1>
+    <p>Recursos de aprendizagem e projetos educativos</p>
+  </header>
+  <div class="repos-list" id="repos-list">
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      <span>Carregando repositórios...</span>
+    </div>
+  </div>
+  <footer>
+    &copy; 2025 zonaeducacional | Vibe Coding | Professor Sérgio Araújo
+  </footer>
+  <script>
+    async function carregarPerfil() {
+      const usuario = "zonaeducacional";
+      const url = `https://api.github.com/users/${usuario}`;
+      const perfilDiv = document.getElementById('perfil');
+      try {
+        const resp = await fetch(url);
+        const perfil = await resp.json();
+        perfilDiv.innerHTML = `
+          <img src="${perfil.avatar_url}" alt="Avatar de ${perfil.login}" class="perfil-avatar" />
+          <div class="perfil-info">
+            <span class="perfil-nome">${perfil.name ? perfil.name : perfil.login}</span>
+            <a href="${perfil.html_url}" target="_blank" rel="noopener">@${perfil.login}</a>
+            <span style="color:#9fa9c2;font-size:0.96em;">${perfil.bio ? perfil.bio : ''}</span>
+          </div>
+        `;
+      } catch (erro) {
+        perfilDiv.innerHTML = `<span style="color:#bfc6d6;">Perfil não encontrado.</span>`;
+      }
+    }
+    async function buscarRepositorios() {
+      const usuario = "zonaeducacional";
+      const url = `https://api.github.com/users/${usuario}/repos?sort=updated`;
+      const lista = document.getElementById('repos-list');
+      const loading = document.getElementById('loading');
+      try {
+        const resp = await fetch(url);
+        const repos = await resp.json();
+        loading.style.display = "none";
+        if (!Array.isArray(repos) || repos.length === 0) {
+          lista.innerHTML = '<div class="loading">Nenhum repositório encontrado.</div>';
+          return;
+        }
+        // Apenas repositórios válidos (não fork, não arquivado, pelo menos 1 commit)
+        const validRepos = repos.filter(repo => 
+          !repo.fork && !repo.archived && repo.size > 0
+        );
+        if (validRepos.length === 0) {
+          lista.innerHTML = '<div class="loading">Nenhum repositório educativo encontrado.</div>';
+          return;
+        }
+        lista.innerHTML = ""; // Limpa o loading
+        validRepos.forEach(repo => {
+          const div = document.createElement('div');
+          div.className = 'repo';
+          div.innerHTML = `
+            <a href="${repo.html_url}" target="_blank" rel="noopener">${repo.name}</a>
+            <div class="repo-desc">${repo.description ? repo.description : 'Sem descrição adicionada.'}</div>
+            <div class="repo-info">
+              <span>⭐ ${repo.stargazers_count}</span>
+              <span>👁️ ${repo.watchers_count}</span>
+              <span>📝 ${repo.language ? repo.language : 'N/A'}</span>
+            </div>
+          `;
+          lista.appendChild(div);
+        });
+      } catch (erro) {
+        loading.innerHTML = '<span>Erro ao carregar repositórios.</span>';
+      }
+    }
+    carregarPerfil();
+    buscarRepositorios();
+  </script>
+</body>
+</html>
